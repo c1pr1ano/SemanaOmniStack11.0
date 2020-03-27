@@ -13,9 +13,9 @@ export default function Profile() {
     
     const history = useHistory();
     
-    const ongName =localStorage.getItem('ongName');
     const ongId =localStorage.getItem('ongId');
-    
+    const ongName =localStorage.getItem('ongName');
+        
     useEffect(() => {
         api.get('profile', {
             headers: {
@@ -37,11 +37,10 @@ export default function Profile() {
             setIncidents(incidents.filter(incident => incident.id !== id));
         }catch (err) {
             alert('Erro ao deletar caso, tente novamente.');
-
         }
     }
 
-    function handleLogout(){
+    function handleLogout() {
         localStorage.clear();
         history.push('/');
     }
@@ -50,7 +49,6 @@ export default function Profile() {
             <header>
             <img src={logoImg} alt="Be The Hero"/>
             <span>Bem vinda, {ongName}</span>
-
             <Link className="button"  to="/incidents/new">Cadastar novo caso</Link>
             <button onClick={handleLogout} type="button">
                 <FiPower size={18} color="#E02041" />
